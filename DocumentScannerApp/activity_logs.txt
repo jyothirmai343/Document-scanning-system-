@@ -1,0 +1,9 @@
+2025-02-28 15:59:02 - User 1 - Registered
+2025-02-28 15:59:10 - User 1 - Logged in
+2025-02-28 15:59:27 - User 1 - Requested credits
+2025-02-28 15:59:36 - User 1 - Scanned document: 1_ca160847.txt
+2025-02-28 15:59:44 - User 1 - Scanned document: 1_f8f93679.txt
+2025-02-28 15:59:46 - User 1 - Exported scan history as ZIP
+2025-02-28 15:59:48 - User 1 - Logged out
+2025-02-28 16:01:36 - User 1 - Logged in
+2025-02-28 16:01:46 - User 1 - Scanned document: 1_672de24e.txt
