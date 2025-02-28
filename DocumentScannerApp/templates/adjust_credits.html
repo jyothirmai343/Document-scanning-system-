@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adjust Credits - Document Scanner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Document Scanner</h1>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a>
+            <a href="{{ url_for('admin_credit_requests') }}">Credit Requests</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Adjust Credits for {{ username }}</h2>
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+        {% if message %}
+            <div class="message">{{ message }}</div>
+        {% endif %}
+        <p><strong>Current Credits:</strong> {{ credits }}</p>
+        <form method="POST">
+            <input type="number" name="credits" placeholder="New Credit Amount" required>
+            <button type="submit">Update Credits</button>
+        </form>
+        <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+    </div>
+</body>
+</html>

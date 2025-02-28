@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan Results - Document Scanner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Document Scanner</h1>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('profile') }}">Profile</a>
+            <a href="{{ url_for('scan_document') }}">Scan Document</a>
+            <a href="{{ url_for('export_scan_history') }}">Export Scans</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Scan Results</h2>
+        {% if message %}
+            <div class="message">{{ message }}</div>
+        {% endif %}
+        {% if similar_posts %}
+            <h3>Similar Documents Found</h3>
+            <table>
+                <tr>
+                    <th>Filename</th>
+                    <th>Similarity (%)</th>
+                </tr>
+                {% for post in similar_posts %}
+                    <tr>
+                        <td>{{ post.filename }}</td>
+                        <td>{{ "%.2f"|format(post.similarity * 100) }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>No similar documents found.</p>
+        {% endif %}
+        <a href="{{ url_for('scan_document') }}">Scan Another Document</a>
+    </div>
+</body>
+</html>

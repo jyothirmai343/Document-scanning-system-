@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Requests - Document Scanner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Document Scanner</h1>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a>
+            <a href="{{ url_for('admin_credit_requests') }}">Credit Requests</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Credit Requests</h2>
+        {% if message %}
+            <div class="message">{{ message }}</div>
+        {% endif %}
+        {% if credit_requests %}
+            <form method="POST">
+                <table>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Reason</th>
+                        <th>Requested At</th>
+                        <th>Action</th>
+                    </tr>
+                    {% for req in credit_requests %}
+                        <tr>
+                            <td>{{ req.user_id }}</td>
+                            <td>{{ req.reason }}</td>
+                            <td>{{ req.requested_at }}</td>
+                            <td>
+                                <button type="submit" name="action_{{ req.id }}" value="approve">Approve</button>
+                                <button type="submit" name="action_{{ req.id }}" value="reject">Reject</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </form>
+        {% else %}
+            <p>No pending credit requests.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

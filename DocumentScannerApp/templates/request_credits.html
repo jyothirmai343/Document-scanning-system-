@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Credits - Document Scanner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Document Scanner</h1>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('profile') }}">Profile</a>
+            <a href="{{ url_for('scan_document') }}">Scan Document</a>
+            <a href="{{ url_for('export_scan_history') }}">Export Scans</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Request Credits</h2>
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+        <form method="POST">
+            <textarea name="reason" placeholder="Reason for requesting credits" required></textarea>
+            <button type="submit">Submit Request</button>
+        </form>
+    </div>
+</body>
+</html>
