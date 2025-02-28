@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Document Scanner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Document Scanner</h1>
+        <nav>
+            {% if 'user_id' in session %}
+                <a href="{{ url_for('profile') }}">Profile</a>
+                <a href="{{ url_for('scan_document') }}">Scan Document</a>
+                <a href="{{ url_for('export_scan_history') }}">Export Scans</a>
+                {% if session['role'] == 'admin' %}
+                    <a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a>
+                {% endif %}
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('register') }}">Register</a>
+            {% endif %}
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Welcome{% if 'username' in session %}, {{ session['username'] }}{% endif %}!</h2>
+        {% if posts %}
+            <h3>Your Scanned Documents</h3>
+            <table>
+                <tr>
+                    <th>Title</th>
+                    <th>Filename</th>
+                    <th>Date Posted</th>
+                </tr>
+                {% for post in posts %}
+                    <tr>
+                        <td>{{ post.title }}</td>
+                        <td>{{ post.filename }}</td>
+                        <td>{{ post.date_posted }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>No documents scanned yet. <a href="{{ url_for('scan_document') }}">Scan one now!</a></p>
+        {% endif %}
+    </div>
+</body>
+</html>
