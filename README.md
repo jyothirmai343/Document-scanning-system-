@@ -1,9 +1,6 @@
-# Document-scanning-system-
-Document Scanning and Management System
-A Flask-based web application designed and developed by Jyothirmai to allow users to register, log in, scan documents, compare them for similarity, manage credits, and export scan history. This README is written by Jyothirmai, the sole creator of this project, to provide an overview, setup instructions, and usage details.
-
+# Document-scanning-system
 Overview
-This project, created by me, Jyothirmai, is a secure and user-friendly web application built using Flask. It enables users to upload text documents, detect similarities with previous uploads, and manage a credit-based system for scanning. The application includes robust authentication, an admin dashboard, and additional features like daily credit resets and activity logging.
+This project is a secure and user-friendly web application built using Flask. It enables users to upload text documents, detect similarities with previous uploads, and manage a credit-based system for scanning. The application includes robust authentication, an admin dashboard, and additional features like daily credit resets and activity logging.
 
 Features
 User Authentication: Secure registration and login with SHA-256 password hashing, implemented by me.
